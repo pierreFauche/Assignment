@@ -49,6 +49,16 @@ Paris            15733403
 Reims            15486616  
 Strasbourg       14987973  
 city             0
+
+
+Question:
+
+The combiner is a function that reduces the amount of information that will treated by the reducer.  
+In some cases the combiner can be the same as the Reducer, according of the nature of the algorithm.  
+We suppose here that the combiner does the same as the reducer.Though it is possible use the reducer class as a combiner but totally useless.
+
+
+
 ***
 ### Exo2  
 Editons le source code avec l'utilitaire vim. Nous avons nommé ici notre .java: WordCount.java, mais nous aurions pu l'appeler autrement, Exo1.java par exemple. 
@@ -98,3 +108,4 @@ voici le résultat obtenu qu'on affiche à l'aide de la commande cat
 60+ Years       4  
 
 
+d
