@@ -1,40 +1,35 @@
-# HDFS MapReduce Assignment
+# HDFS MapReduce Assignment  
 ### Exo1
 
-
-Pour editer fichier .java 
-(nommé ici WordCount-->qu'on aurait pu appeler autrement comme Exo1.java )
+Editons le source code avec l'utilitaire vim. Nous avons nommé ici notre .java: WordCount.java, mais nous aurions pu l'appeler autrement, Exo1.java par exemple. 
+Vous pouvez trouver notre source code ici:
+Assignment/hadoop/src/main/java/com/aamend/hadoop/hadoop/Exo1.java  
 ```sh
 vim WordCount.java
 ```
-on rajoute notre code ensuite qui se situe ...
-
-
-
-pour connaitre l'emplacement de son JDK
+Il nous faut a present definir les variables d'environement. Pour cela nous affichons d'abord le chemin de notre jdk.
 ```sh
 echo $JAVA_HOME
 ```
-
-pour definir les variables d'environement
+Puis nous definissons les variables comme suit:
 ```sh
 export JAVA_HOME=/usr/jdk64/jdk1.8.0_40/
 export PATH=${JAVA_HOME}/bin:${PATH}
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 ```
-pour compiler le .java
+Compilons maintenat notre code source:
 ```sh
 bin/hadoop com.sun.tools.javac.Main WordCount.java
 ```
-créer le jar
+Puis créons le .jar
 ```sh
 jar cf wc.jar WordCount*.class
 ```
-pour ne laisser que le .jar dans le dossier courant pour permettre de run
+Afin de ne pas avoir de problèmes lors du lencement de l'application nous devons supprimer tous les autres fichier que le .jar dans le dossier courant:
 ```sh
 rm Word*
 ```
-pour run l'application nb on a créé prealablement un dossier output avec mkdir
+Nous pouvons donc maintenant "runer" l'application. On note ici le fichier d'entré file.csv qui se trouve sur le serveur hdfs, ansi que le dossier de sortie que nous avons créé préalablement a l'aide de mkdir, qui se trouve sur notre espace dedié sur le serveur .
 ```sh
 hadoop jar wc.jar WordCount /res/mapred_assignment/file.csv /user/fauche/todl/output2
 ```
@@ -43,7 +38,6 @@ voici le resultat obtenu qu'on affiche a l'aide de la commande cat
 ```sh
 [fauche@hadoop ~]$ hdfs dfs -cat /user/fauche/todl/output2/part-r-00000
 ```
-
 Bordeaux         15146906  
 Grenoble         15100664  
 Lille            15870332  
@@ -55,38 +49,43 @@ Paris            15733403
 Reims            15486616  
 Strasbourg       14987973  
 city             0
-
-***********
-Exo2
-***********
+***
+### Exo2  
+Editons le source code avec l'utilitaire vim. Nous avons nommé ici notre .java: WordCount.java, mais nous aurions pu l'appeler autrement, Exo1.java par exemple. 
+Vous pouvez trouver notre source code ici:
 ```sh
-vim WordCount.java + code
+vim WordCount.java
 ```
-
-
+Il nous faut a present definir les variables d'environement. Pour cela nous affichons d'abord le chemin de notre jdk.
+```sh
+echo $JAVA_HOME
+```
+Puis nous definissons les variables comme suit:
 ```sh
 export JAVA_HOME=/usr/jdk64/jdk1.8.0_40/
 export PATH=${JAVA_HOME}/bin:${PATH}
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 ```
-
+Compilons maintenat notre code source:
+```sh
 bin/hadoop com.sun.tools.javac.Main WordCount.java
+```
+Puis créons le .jar
 ```sh
 jar cf wc.jar WordCount*.class
 ```
-
+Afin de ne pas avoir de problèmes lors du lencement de l'application nous devons supprimer tous les autres fichier que le .jar dans le dossier courant:
 ```sh
 rm Word*
 ```
-
+Nous pouvons donc maintenant "runer" l'application. On note ici le fichier d'entré file.csv qui se trouve sur le serveur hdfs, ansi que le dossier de sortie que nous avons créé préalablement a l'aide de mkdir, qui se trouve sur notre espace dedié sur le serveur .
 ```sh
 hadoop jar wc.jar WordCount /res/mapred_assignment/file.csv /user/fauche/todl/output3
 ```
-
+voici le resultat obtenu qu'on affiche a l'aide de la commande cat
 ```sh
 [fauche@hadoop ~]$ hdfs dfs -cat /user/fauche/todl/output3/part-r-00000
 ```
-
 0               0  
 0-5 Years       4  
 13-17 Years     29  
