@@ -22,7 +22,7 @@ public class Exo1 {
   private final static IntWritable one = new IntWritable(1);
   private Text word = new Text();
 
-  private int i=0;//somme des bank account par ville ff
+  private int i=0;//somme des bank account par ville
 
   public void map(Object key, Text value, Context context
   ) throws IOException, InterruptedException {
