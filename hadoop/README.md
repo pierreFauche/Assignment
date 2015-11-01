@@ -17,17 +17,17 @@ hadoop jar wc.jar WordCount /res/mapred_assignment/file.csv /user/fauche/todl/ou
 
 [fauche@hadoop ~]$ hdfs dfs -cat /user/fauche/todl/output2/part-r-00000
 
-Bordeaux        15146906
-Grenoble        15100664
-Lille           15870332
-Lyon            14500047
-Marseille       15708634
-Nantes          15984687
-Nice            13719135
-Paris           15733403
-Reims           15486616
-Strasbourg      14987973
-city            0
+Bordeaux   |      15146906
+Grenoble   |      15100664
+Lille      |      15870332
+Lyon       |      14500047
+Marseille  |      15708634
+Nantes     |      15984687
+Nice       |      13719135
+Paris      |      15733403
+Reims      |      15486616
+Strasbourg |      14987973
+city       |      0
 
 ***********
 Exo2
