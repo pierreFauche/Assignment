@@ -16,48 +16,48 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class Exo1 {
 
-  public static class TokenizerMapper
-       extends Mapper<Object, Text, Text, IntWritable>{
+	  public static class TokenizerMapper
+      extends Mapper<Object, Text, Text, IntWritable>{
 
-    private final static IntWritable one = new IntWritable(1);
-    private Text word = new Text();
-	private int i;
+  private final static IntWritable one = new IntWritable(1);
+  private Text word = new Text();
 
-    public void map(Object key, Text value, Context context
-                    ) throws IOException, InterruptedException {
-      
-        String[] result = value.toString().split(";");
-		word.set(result[1]);
-		
-		  try{		
-		  i = Integer.parseInt(result[3]); 
-		  }
-		  catch(Exception e){
-			  i=0;
-		  }
-      
-      
+  private int i=0;//somme des bank account par ville ff
+
+  public void map(Object key, Text value, Context context
+  ) throws IOException, InterruptedException {
+      String[] result = value.toString().split(";");
+      word.set(result[1]);
+
+      try{// on fait un try catch pour éviter une exception pour le header du csv
+          i = Integer.parseInt(result[3]);
+      }
+      catch(Exception e){
+          i=0;
+      }
+
+
       one.set(i);
-	  context.write(word, one);
-      
-    }
+      context.write(word, one);
+      }
   }
 
-  public static class IntSumReducer
-       extends Reducer<Text,IntWritable,Text,IntWritable> {
-    private IntWritable result = new IntWritable();
 
-    public void reduce(Text key, Iterable<IntWritable> values,
-                       Context context
-                       ) throws IOException, InterruptedException {
+public static class IntSumReducer
+      extends Reducer<Text,IntWritable,Text,IntWritable> {
+  private IntWritable result = new IntWritable();
+
+  public void reduce(Text key, Iterable<IntWritable> values,
+                     Context context
+  ) throws IOException, InterruptedException {
       int sum = 0;
       for (IntWritable val : values) {
-        sum += val.get();
+          sum += val.get();
       }
       result.set(sum);
       context.write(key, result);
-    }
   }
+}
 
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
