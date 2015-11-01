@@ -97,4 +97,4 @@ voici le résultat obtenu qu'on affiche à l'aide de la commande cat
 6-12 Years      12  
 60+ Years       4  
 
-
+  
