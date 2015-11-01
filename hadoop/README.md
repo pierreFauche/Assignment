@@ -53,9 +53,10 @@ city             0
 
 Question:
 
-The combiner is a function that reduces the amount of information that will treated by the reducer.  
-In some cases the combiner can be the same as the Reducer, according of the nature of the algorithm.  
-We suppose here that the combiner does the same as the reducer.Though it's possible to use the reducer class as a combiner, but totally useless.
+Le combiner est une fonction qui permet de réduire la quantité d'information qui sera traité par le reducer.
+Dans certains cas, la fonction accomplie par le combiner peut être la même que le reducer, en fonction de la nature de l'algorithme.
+Nous supposons ici que le combiner fait de même que la reducer. Donc il est possible d'utiliser la classe reducer comme un combiner, mais totalement inutile.
+
 
 
 
